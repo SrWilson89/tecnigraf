@@ -1,0 +1,69 @@
+/* Estilos para la etiqueta de catálogo */
+.user-info {
+    position: relative;
+}
+
+.catalogo-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-right: auto;
+    margin-left: 1rem;
+}
+
+/* Estilos para diferentes tipos de catálogo */
+.producto-card[data-catalogo="admin"] {
+    border-left: 4px solid #dc3545;
+}
+
+.producto-card[data-catalogo="premium"] {
+    border-left: 4px solid #ffc107;
+}
+
+.producto-card[data-catalogo="basico"] {
+    border-left: 4px solid #28a745;
+}
+
+@media (max-width: 768px) {
+    .catalogo-tag {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+/* Añade esto al final de tu style.css existente */
+.user-info {
+    position: relative;
+}
+
+.catalogo-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-right: auto;
+    margin-left: 1rem;
+}
+
+.producto-card[data-catalogo="admin"] {
+    border-left: 4px solid #dc3545;
+}
+
+.producto-card[data-catalogo="premium"] {
+    border-left: 4px solid #ffc107;
+}
+
+.producto-card[data-catalogo="basico"] {
+    border-left: 4px solid #28a745;
+}
+
+@media (max-width: 768px) {
+    .catalogo-tag {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}

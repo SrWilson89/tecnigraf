@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Tecnigraf</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Encabezado de la empresa -->
+    <header>
+        <h1>Tecnigraf</h1>
+    </header>
+
+    <main>
+        <!-- Sección del Catálogo de Productos -->
+        <section id="catalogo-productos">
+            <h2>Nuestro Catálogo</h2>
+            <div class="productos-container">
+                
+                <!-- Producto 1 -->
+                <div class="producto-card" data-id="prod1" data-nombre="Producto Tecnológico A" data-precio="299.99">
+                    <img src="https://via.placeholder.com/300x200.png?text=Producto+A" alt="Imagen del Producto A">
+                    <h3>Producto Tecnológico A</h3>
+                    <p class="descripcion">Una descripción breve y atractiva de este increíble producto tecnológico.</p>
+                    <p class="precio-unitario">Precio: €299.99</p>
+                    <div class="interaccion-producto">
+                        <label for="cantidad-prod1">Cantidad:</label>
+                        <input type="number" id="cantidad-prod1" class="cantidad" min="0" value="0">
+                        <p class="precio-total-producto">Total: €0.00</p>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="producto-card" data-id="prod2" data-nombre="Accesorio Moderno B" data-precio="49.50">
+                    <img src="https://via.placeholder.com/300x200.png?text=Producto+B" alt="Imagen del Producto B">
+                    <h3>Accesorio Moderno B</h3>
+                    <p class="descripcion">Complemento esencial para tu día a día, con un diseño elegante y funcional.</p>
+                    <p class="precio-unitario">Precio: €49.50</p>
+                    <div class="interaccion-producto">
+                        <label for="cantidad-prod2">Cantidad:</label>
+                        <input type="number" id="cantidad-prod2" class="cantidad" min="0" value="0">
+                        <p class="precio-total-producto">Total: €0.00</p>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="producto-card" data-id="prod3" data-nombre="Gadget Innovador C" data-precio="120.00">
+                    <img src="https://via.placeholder.com/300x200.png?text=Producto+C" alt="Imagen del Producto C">
+                    <h3>Gadget Innovador C</h3>
+                    <p class="descripcion">La última innovación que resolverá problemas que no sabías que tenías.</p>
+                    <p class="precio-unitario">Precio: €120.00</p>
+                    <div class="interaccion-producto">
+                        <label for="cantidad-prod3">Cantidad:</label>
+                        <input type="number" id="cantidad-prod3" class="cantidad" min="0" value="0">
+                        <p class="precio-total-producto">Total: €0.00</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección del Formulario de Pedido -->
+        <section id="formulario-pedido">
+            <h2>Realizar Pedido</h2>
+            <form id="pedido-form">
+                <!-- Campos de información del cliente -->
+                <div class="form-grupo">
+                    <label for="nombre-cliente">Nombre Completo:</label>
+                    <input type="text" id="nombre-cliente" name="nombre" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="direccion-envio">Dirección de Envío:</label>
+                    <input type="text" id="direccion-envio" name="direccion" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="fecha-pedido">Fecha del Pedido:</label>
+                    <input type="date" id="fecha-pedido" name="fecha" required>
+                </div>
+
+                <!-- Resumen del Pedido (se genera con JS) -->
+                <h3>Resumen del Pedido</h3>
+                <div id="resumen-pedido">
+                    <p>Añade productos del catálogo para ver el resumen aquí.</p>
+                </div>
+                <div id="total-pedido-final">
+                    <strong>Total del Pedido: €0.00</strong>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit">Enviar Pedido por Correo</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Tecnigraf - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
