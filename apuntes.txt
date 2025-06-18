@@ -1,0 +1,77 @@
+APUNTES PARA USO DEL SISTEMA DE CATÁLOGOS TECNIGRAF
+
+1. INSTALACIÓN INICIAL
+----------------------
+- Ejecutar el archivo install.php en el navegador (ej: http://localhost/carpeta/install.php)
+  - Esto creará las tablas de la base de datos
+  - Insertará usuarios de prueba y productos de ejemplo
+
+2. USUARIOS DISPONIBLES (por defecto)
+-------------------------------------
+- Administrador:
+  Usuario: admin
+  Contraseña: 1234
+  (Acceso a todos los productos)
+
+- Cliente 1:
+  Usuario: cliente1
+  Contraseña: 1234
+  (Acceso a productos del catálogo "cliente1")
+
+- Cliente 2:
+  Usuario: cliente2
+  Contraseña: 1234
+  (Acceso a productos del catálogo "cliente2")
+
+3. FLUJO DE USO
+---------------
+a) Acceso:
+- Ingresar a login.php (ej: http://localhost/carpeta/login.php)
+- Introducir credenciales válidas
+
+b) Catálogo:
+- Cada usuario verá solo los productos asignados a su catálogo
+- Los administradores ven todos los productos
+- Los productos muestran:
+  - Imagen
+  - Nombre
+  - Descripción
+  - Precio unitario
+  - Selector de cantidad
+
+c) Realizar pedido:
+1. Seleccionar cantidades en los productos deseados
+2. Completar el formulario con:
+   - Nombre completo
+   - Dirección de envío
+   - Fecha del pedido (auto-rellenada con la fecha actual)
+3. Hacer clic en "Enviar Pedido por Correo"
+   - Se abrirá el cliente de correo predeterminado con:
+     * Destinatario: ventas@miempresa.com
+     * Asunto automático
+     * Cuerpo con todos los detalles del pedido
+
+4. CERRAR SESIÓN
+----------------
+- Usar el botón "Cerrar Sesión" en la esquina superior derecha
+- Redirige automáticamente a la página de login
+
+5. PRUEBAS Y DIAGNÓSTICO
+------------------------
+- test_db.php: Verifica conexión a la base de datos
+- test_auth.php: Muestra usuarios y prueba hashes de contraseñas
+
+6. PERSONALIZACIÓN
+------------------
+- Para cambiar el correo de destino:
+  Editar script.js, variable CORREO_EMPRESA
+
+- Para añadir más usuarios o productos:
+  Ejecutar consultas SQL directamente en la base de datos o
+  modificar install.php y volver a ejecutarlo (¡cuidado con duplicados!)
+
+7. NOTAS DE SEGURIDAD
+---------------------
+- Cambiar las credenciales de la base de datos en db_config.php
+- No usar contraseñas simples en producción
+- Eliminar archivos de test (test_*.php) en entornos productivos
