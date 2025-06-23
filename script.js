@@ -160,3 +160,98 @@ document.addEventListener('DOMContentLoaded', () => {
         fechaInput.valueAsDate = new Date();
     }
 });
+// --- Variables globales ---
+let cart = [];
+
+// --- Funciones del carrito ---
+function addToCart(productId, nombre, precio) {
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: productId,
+            name: nombre,
+            price: parseFloat(precio),
+            quantity: 1
+        });
+    }
+    
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cart-count');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    
+    // Actualizar contador
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    // Actualizar items
+    cartItems.innerHTML = '';
+    let total = 0;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name} x ${item.quantity}</span>
+                <span>${formatearMoneda(itemTotal)}</span>
+                <button class="remove-item" data-id="${item.id}">🗑️</button>
+            </div>
+        `;
+    });
+    
+    // Actualizar total
+    cartTotal.textContent = `Total: ${formatearMoneda(total)}`;
+}
+
+// --- Event Listeners ---
+document.addEventListener('click', (e) => {
+    // Añadir al carrito
+    if (e.target.classList.contains('btn-anadir-carrito')) {
+        const productoCard = e.target.closest('.producto-card');
+        const id = productoCard.dataset.id;
+        const nombre = productoCard.dataset.nombre;
+        const precio = productoCard.dataset.precio;
+        
+        addToCart(id, nombre, precio);
+    }
+    
+    // Eliminar del carrito
+    if (e.target.classList.contains('remove-item')) {
+        const productId = e.target.dataset.id;
+        cart = cart.filter(item => item.id !== productId);
+        updateCartUI();
+    }
+    
+    // Mostrar/ocultar carrito
+    if (e.target.classList.contains('cart-icon')) {
+        const carritoSection = document.getElementById('carrito');
+        carritoSection.style.display = carritoSection.style.display === 'none' ? 'block' : 'none';
+    }
+    
+    // Checkout
+    if (e.target.id === 'checkout-btn') {
+        procesarPago();
+    }
+});
+function procesarPago() {
+    // Simulación de pasarela de pago
+    const nombre = prompt("Nombre completo:");
+    const tarjeta = prompt("Número de tarjeta:");
+    const cvv = prompt("CVV:");
+    
+    if (nombre && tarjeta && cvv) {
+        enviarPedidoPorCorreo();
+        alert("¡Pago exitoso!");
+        cart = [];
+        updateCartUI();
+    } else {
+        alert("Pago cancelado");
+    }
+}

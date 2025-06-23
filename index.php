@@ -46,7 +46,18 @@ if ($catalogoUsuario === 'admin') {
             <span>Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong></span>
             <span class="catalogo-tag">Catálogo: <?php echo ucfirst($_SESSION['catalogo']); ?></span>
             <a href="logout.php" class="logout-button">Cerrar Sesión</a>
-        </div>
+        </div><!-- Añade esto en el header -->
+    <div class="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <!-- Sección del carrito (oculta inicialmente) -->
+    <section id="carrito" style="display:none;">
+        <h2>Tu Carrito</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total">Total: €0.00</div>
+        <button id="checkout-btn">Pagar</button>
+    </section>
     </header>
 
     <main>
@@ -63,10 +74,13 @@ if ($catalogoUsuario === 'admin') {
                     <p class="descripcion"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
                     <p class="precio-unitario">Precio: <?php echo '€' . number_format($producto['precio'], 2); ?></p>
                     <div class="interaccion-producto">
-                        <label for="cantidad-<?php echo $producto['id']; ?>">Cantidad:</label>
-                        <input type="number" id="cantidad-<?php echo $producto['id']; ?>" class="cantidad" min="0" value="0">
-                        <p class="precio-total-producto">Total: €0.00</p>
-                    </div>
+                    <button class="btn-anadir-carrito" 
+                            data-id="<?php echo $producto['id']; ?>"
+                            data-nombre="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                            data-precio="<?php echo $producto['precio']; ?>">
+                        Añadir al carrito
+                    </button>
+                </div>
                 </div>
                 <?php endforeach; ?>
             </div>
