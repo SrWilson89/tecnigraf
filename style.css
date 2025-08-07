@@ -1,72 +1,143 @@
-/* Estilos para la etiqueta de catálogo */
-.user-info {
-    position: relative;
+/* ======================== */
+/* Estilos Generales       */
+/* ======================== */
+:root {
+    --primary-color: #0056b3; /* Azul profesional */
+    --secondary-color: #6c757d; /* Gris oscuro */
+    --background-color: #f8f9fa; /* Gris claro para el fondo */
+    --text-color: #343a40; /* Texto oscuro */
+    --light-text-color: #ffffff; /* Texto claro */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004085;
+}
+
+.form-grupo {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25);
+}
+
+/* ======================== */
+/* Estilos para login.php  */
+/* ======================== */
+.login-container {
+    max-width: 400px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.error-message {
+    color: var(--light-text-color);
+    background-color: #dc3545;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* ======================== */
+/* Estilos para el Catálogo (si aplica) */
+/* ======================== */
+.producto-card {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos de las etiquetas de catálogo */
 .catalogo-tag {
-    background: rgba(255,255,255,0.2);
+    display: inline-block;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     border: 1px solid rgba(255,255,255,0.3);
     margin-right: auto;
     margin-left: 1rem;
-}
-
-/* Estilos para diferentes tipos de catálogo */
-.producto-card[data-catalogo="admin"] {
-    border-left: 4px solid #dc3545;
-}
-
-.producto-card[data-catalogo="premium"] {
-    border-left: 4px solid #ffc107;
-}
-
-.producto-card[data-catalogo="basico"] {
-    border-left: 4px solid #28a745;
-}
-
-@media (max-width: 768px) {
-    .catalogo-tag {
-        margin-left: 0;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-}
-/* Añade esto al final de tu style.css existente */
-.user-info {
-    position: relative;
-}
-
-.catalogo-tag {
-    background: rgba(255,255,255,0.2);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255,255,255,0.3);
-    margin-right: auto;
-    margin-left: 1rem;
+    background: var(--secondary-color);
+    color: var(--light-text-color);
 }
 
 .producto-card[data-catalogo="admin"] {
-    border-left: 4px solid #dc3545;
+    border-left: 4px solid #dc3545; /* Rojo para admin */
 }
 
 .producto-card[data-catalogo="premium"] {
-    border-left: 4px solid #ffc107;
+    border-left: 4px solid #ffc107; /* Amarillo para premium */
 }
 
 .producto-card[data-catalogo="basico"] {
-    border-left: 4px solid #28a745;
+    border-left: 4px solid #28a745; /* Verde para básico */
 }
 
-@media (max-width: 768px) {
-    .catalogo-tag {
-        margin-left: 0;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-}
 /* Estilos del carrito */
 .cart-icon {
     position: fixed;
@@ -81,12 +152,12 @@
     position: fixed;
     top: 60px;
     right: 20px;
-    background: white;
+    background: #ffffff;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--box-shadow);
     z-index: 999;
 }
 
@@ -101,15 +172,21 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: #dc3545;
 }
 
 #checkout-btn {
     width: 100%;
     padding: 10px;
-    background: #4CAF50;
-    color: white;
+    background: #28a745; /* Verde para el botón de pago */
+    color: var(--light-text-color);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#checkout-btn:hover {
+    background-color: #218838;
 }
